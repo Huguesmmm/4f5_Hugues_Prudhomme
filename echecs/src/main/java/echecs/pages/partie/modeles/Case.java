@@ -1,6 +1,6 @@
-package echec.pages.partie.modeles;
+package echecs.pages.partie.modeles;
 
-import echec.enumerations.Couleur;
+import echecs.enumerations.Couleur;
 import ntro.debogage.J;
 
 public class Case implements CaseLectureSeule{
@@ -8,7 +8,7 @@ public class Case implements CaseLectureSeule{
 
 	private Couleur couleur;
 	private Position position;
-
+	
 	public Couleur getCouleur() {
 		J.appel(this);
 		return couleur;

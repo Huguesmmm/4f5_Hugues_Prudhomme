@@ -1,6 +1,6 @@
-package echec.pages.partie.modeles;
+package echecs.pages.partie.modeles;
 
-import echec.enumerations.Colonne;
+import echecs.enumerations.Colonne;
 
 public class Position {
 	private Colonne colonne;

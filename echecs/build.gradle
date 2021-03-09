@@ -4,7 +4,7 @@ plugins {
 
 task partie_locale (type:JavaExec) {
 	dependsOn 'classes'
-	main = 'echecs.pages.partie_locale.PagePartieLocale'
+	main = 'echecs.pages.partie.PagePartieLocale'
 	classpath = sourceSets.main.runtimeClasspath
 	jvmArgs('-Dfile.encoding=UTF-8', '-Duser.language=fr')
 }

@@ -1,4 +1,4 @@
-package echec.pages.partie.modeles;
+package echecs.pages.partie.modeles;
 
 import java.util.List;
 

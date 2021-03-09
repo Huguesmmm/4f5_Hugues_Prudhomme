@@ -1,6 +1,6 @@
-package echec.pages.partie.modeles;
+package echecs.pages.partie.modeles;
 
-import echec.enumerations.Couleur;
+import echecs.enumerations.Couleur;
 
 public interface CaseLectureSeule {
 	Piece getPiece();

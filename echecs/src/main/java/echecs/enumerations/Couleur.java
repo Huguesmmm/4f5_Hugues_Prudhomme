@@ -1,4 +1,4 @@
-package echec.enumerations;
+package echecs.enumerations;
 
 public enum Couleur {
 	NOIR,

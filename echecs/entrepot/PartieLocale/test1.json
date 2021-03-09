@@ -1,0 +1,16 @@
+{
+  "casesOccupees": [
+    {
+      "piece": "pion",
+      "couleurPiece": "blanc",
+      "couleurCase": "blanc",
+      "position": "a2"
+    },
+    {
+      "piece": "pion",
+      "couleurPiece": "blanc",
+      "couleurCase": "noir",
+      "position": "b2"
+    }
+  ]
+}

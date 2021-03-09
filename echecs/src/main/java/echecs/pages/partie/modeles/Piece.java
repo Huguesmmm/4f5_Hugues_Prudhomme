@@ -1,7 +1,7 @@
-package echec.pages.partie.modeles;
+package echecs.pages.partie.modeles;
 
-import echec.enumerations.Couleur;
-import echec.enumerations.TypePiece;
+import echecs.enumerations.Couleur;
+import echecs.enumerations.TypePiece;
 
 public class Piece implements PieceLectureSeule{
 	private Couleur couleur;

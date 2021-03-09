@@ -1,4 +1,4 @@
-package echec.pages.partie.modeles;
+package echecs.pages.partie.modeles;
 
 public interface PartieLocaleLectureSeule 
        extends   PartieLectureSeule { 

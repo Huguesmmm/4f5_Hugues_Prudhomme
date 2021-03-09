@@ -1,20 +1,22 @@
-package echec.pages.partie.modeles;
+package echecs.pages.partie.modeles;
+
+import echecs.enumerations.Couleur;
+import ntro.debogage.J;
+import ntro.mvc.modeles.Modele;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import echec.enumerations.Couleur;
-import ntro.debogage.J;
-import ntro.mvc.modeles.Modele;
 
 public class Partie<PLS extends PartieLectureSeule> extends Modele<PLS> implements PartieLectureSeule {
 
 	protected List<Case> cases;
 	protected Couleur couleurCourante;
+	protected String id;
 
 	@Override
 	public void apresChargementJson() {
 		J.appel(this);
+		
 	}
 
 	@Override
@@ -34,5 +36,14 @@ public class Partie<PLS extends PartieLectureSeule> extends Modele<PLS> implemen
 
 		return casesLectureSeule;
 	}
+	
+	public Couleur getCouleurCourante() {
+		J.appel(this);
+		return couleurCourante;
+	}
 
+	public String getId() {
+		J.appel(this);
+		return id;
+	}
 }
