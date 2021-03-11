@@ -1,7 +1,7 @@
 package echecs.pages.partie.modeles;
 
-import echecs.enumerations.Colonne;
 import echecs.Constantes;
+import echecs.enumerations.Colonne;
 import echecs.enumerations.Couleur;
 import ntro.debogage.J;
 
@@ -13,28 +13,21 @@ public class Plateau implements PlateauLectureSeule {
     protected List<Case> casesOccupees;
 
     public void apresCreation() {
+        J.appel(this);
         // création du tableau de toutes les cases
-        for (int i = 0; i < plateauCases.length; i++) {
-            int indexColonne = 0;
-            Couleur altCouleur = (i % 2 == 0) ? Couleur.BLANC : Couleur.NOIR;
-            for (Colonne colonne : Colonne.values()) {
-                Case nouvelleCase = new Case();
-                nouvelleCase.setCouleur(altCouleur);
-                nouvelleCase.setPosition(new Position(colonne, i));
-                plateauCases[i][indexColonne] = nouvelleCase;
-                altCouleur = (altCouleur == Couleur.NOIR) ? Couleur.BLANC : Couleur.NOIR;
-                indexColonne++;
-            }
-        }
+        initialiserPlateauCases();
 
         // création de la liste des cases occupées
         casesOccupees = new ArrayList<>();
     }
 
     public void apresChargementJson() {
+        J.appel(this);
+        initialiserPlateauCases();
         // case occupé est une liste pleine
-        for(Case aCase : casesOccupees){
-            
+        for(int indiceCase = 0; indiceCase < casesOccupees.size(); indiceCase++){
+            Case aCase = casesOccupees.get(indiceCase);
+            aCase.apresChargementJson();
         }
     }
 
@@ -53,6 +46,7 @@ public class Plateau implements PlateauLectureSeule {
     }
 
     public void setCasesOccupees(List<Case> cases) {
+        J.appel(this);
         this.casesOccupees = cases;
     }
 
@@ -71,6 +65,22 @@ public class Plateau implements PlateauLectureSeule {
     }
 
     public void setPlateauCases(Case[][] plateauCases) {
+        J.appel(this);
         this.plateauCases = plateauCases;
+    }
+
+    public void initialiserPlateauCases(){
+        for (int i = 0; i < plateauCases.length; i++) {
+            int indexColonne = 0;
+            Couleur altCouleur = (i % 2 == 0) ? Couleur.BLANC : Couleur.NOIR;
+            for (Colonne colonne : Colonne.values()) {
+                Case nouvelleCase = new Case();
+                nouvelleCase.setCouleur(altCouleur);
+                nouvelleCase.setPosition(new Position(colonne, i));
+                plateauCases[i][indexColonne] = nouvelleCase;
+                altCouleur = (altCouleur == Couleur.NOIR) ? Couleur.BLANC : Couleur.NOIR;
+                indexColonne++;
+            }
+        }
     }
 }

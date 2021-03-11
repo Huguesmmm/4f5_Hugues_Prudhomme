@@ -27,5 +27,9 @@ public class Position implements PositionLectureSeule{
 	public void setRang(int rang) {
 		this.rang = rang;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Position : " + colonne + rang;
+	}
 }
