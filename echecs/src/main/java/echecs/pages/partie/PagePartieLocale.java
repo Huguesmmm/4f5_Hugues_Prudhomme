@@ -31,11 +31,20 @@ public class PagePartieLocale extends Application {
 	@Override
 	public void start(Stage fenetrePrincipale) throws Exception {
 		J.appel(this);
-		
+
 		String idModeleTest = IDS_MODELES_TESTS[alea.nextInt(IDS_MODELES_TESTS.length)];
-		PartieLocale partie = EntrepotDeModeles.obtenirModele(PartieLocale.class, idModeleTest);
-		
-		J.valeurs(partie.getId(), partie.getCouleurCourante());
+		try {
+			PartieLocale partie = EntrepotDeModeles.obtenirModele(PartieLocale.class, idModeleTest);
+			J.valeurs(partie.getId());
+			// afficher la liste de cases occupees
+			System.out.println(partie.getPlateau().getCasesOccupees().get(0).getCouleur());
+
+
+
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
+
 		System.out.println("Hello");
 
 		Systeme.quitter();

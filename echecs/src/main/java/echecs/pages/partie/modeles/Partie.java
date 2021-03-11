@@ -4,46 +4,50 @@ import echecs.enumerations.Couleur;
 import ntro.debogage.J;
 import ntro.mvc.modeles.Modele;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Partie<PLS extends PartieLectureSeule> extends Modele<PLS> implements PartieLectureSeule {
 
-	protected List<Case> cases;
+	protected int nbCaseOccupees;
+	protected Plateau plateau;
 	protected Couleur couleurCourante;
-	protected String id;
-
-	@Override
-	public void apresChargementJson() {
-		J.appel(this);
-		
-	}
 
 	@Override
 	public void apresCreation() {
 		J.appel(this);
+
+		couleurCourante = Couleur.BLANC;
+		initialiserPlateau();
 	}
 
 	@Override
-	public List<CaseLectureSeule> getCases() {
+	public void apresChargementJson() {
 		J.appel(this);
 
-		List<CaseLectureSeule> casesLectureSeule = new ArrayList<>();
+        plateau.apresChargementJson();
+	}
 
-		for (Case cs : cases) {
-			casesLectureSeule.add((CaseLectureSeule) cs);
-		}
-
-		return casesLectureSeule;
+	private void initialiserPlateau(){
+		J.appel(this);
+		plateau = new Plateau();
+		plateau.apresCreation();
 	}
 	
 	public Couleur getCouleurCourante() {
 		J.appel(this);
 		return couleurCourante;
 	}
-
-	public String getId() {
-		J.appel(this);
-		return id;
+	
+	public void setCouleurCourant(Couleur couleurCourante) {
+		this.couleurCourante = couleurCourante;
 	}
+
+	public PlateauLectureSeule getPlateau(){
+		J.appel(this);
+		return (PlateauLectureSeule) plateau;
+	}
+
+	public void setPlateau(Plateau plateau){
+		J.appel(this);
+		this.plateau = plateau;
+	}
+
 }

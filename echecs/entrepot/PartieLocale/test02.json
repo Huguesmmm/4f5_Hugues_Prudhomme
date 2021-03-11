@@ -1,16 +1,28 @@
 {
-  "casesOccupees": [
-    {
-      "piece": "pion",
-      "couleurPiece": "noir",
-      "couleurCase": "noir",
-      "position": "a7"
-    },
-    {
-      "piece": "reine",
-      "couleurPiece": "blanc",
-      "couleurCase": "blanc",
-      "position": "d3"
-    }
-  ]
+  "couleurCourante": "NOIR",
+  "plateau": {
+    "casesOccupees": [
+      {
+        "piece": {
+          "couleur": "BLANC",
+          "typePiece": "PION"
+        },
+        "couleur": "BLANC",
+        "position":{
+          "rang": 2,
+          "colonne" : "B"
+        }
+      },
+      {
+        "piece": {
+          "couleur": "BLANC",
+          "typePiece": "CAVALIER"
+        },
+        "position":{
+          "rang": 6,
+          "colonne": "F"
+        }
+      }
+    ]
+  }
 }

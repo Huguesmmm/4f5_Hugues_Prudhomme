@@ -4,10 +4,16 @@ import echecs.enumerations.Couleur;
 import ntro.debogage.J;
 
 public class Case implements CaseLectureSeule{
-	private Piece piece;
 
-	private Couleur couleur;
+	private transient boolean estOccupee;
+	private Piece piece;
+	private transient Couleur couleur;
 	private Position position;
+
+	public void apresChargementJson(){
+		J.appel(this);
+
+	}
 	
 	public Couleur getCouleur() {
 		J.appel(this);
@@ -30,10 +36,12 @@ public class Case implements CaseLectureSeule{
 	}
 	
 	public Piece getPiece() {
+		J.appel(this);
 		return piece;
 	}
 
 	public void setPiece(Piece piece) {
+		J.appel(this);
 		this.piece = piece;
 	}
 }
