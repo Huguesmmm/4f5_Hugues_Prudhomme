@@ -5,7 +5,7 @@ import ntro.debogage.J;
 
 public class Case implements CaseLectureSeule{
 
-	private transient boolean estOccupee;
+	private transient boolean isOccupied;
 	private Piece piece;
 	private transient final Couleur couleur;
 	private final Position position;
@@ -38,5 +38,37 @@ public class Case implements CaseLectureSeule{
 	public void setPiece(Piece piece) {
 		J.appel(this);
 		this.piece = piece;
+		this.isOccupied = true;
+	}
+
+	public void reset(){
+		this.isOccupied = false;
+	}
+
+	public boolean isOccupied(){
+		return isOccupied;
+	}
+	public void setOccupied(boolean occupied){
+		isOccupied = occupied;
+	}
+
+	@Override
+	public String toString() {
+		if(this.isOccupied){
+			return "Case{" +
+					"estOccupee=" + isOccupied +
+					", piece( " + piece.getTypePiece().name() + piece.getCouleur().name() + " )" +
+					", couleur=" + couleur +
+					", position=" + position.toString() +
+					'}';
+		}else{
+			return "Case{" +
+					"estOccupee=" + isOccupied +
+					", piece( vide )" +
+					", couleur=" + couleur +
+					", position=" + position.toString() +
+					'}';
+		}
+
 	}
 }

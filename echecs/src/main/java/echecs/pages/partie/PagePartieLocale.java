@@ -52,27 +52,14 @@ public class PagePartieLocale extends Application {
 			System.out.println(e.getMessage());
 			System.out.println("Erreur: list case occupees");
 		}
+
 		try{
-			CaseLectureSeule[][] tabCases = partie.getPlateau().getPlateauCases();
-
-			for(int i = 0; i < tabCases.length; i++){
-				for(int j = 0; j < tabCases[i].length; j++){
-					CaseLectureSeule aCase = tabCases[i][j];
-					if(aCase.getPiece() != null){
-						J.valeurs(aCase.getPosition().toString(), aCase.getCouleur().name(),
-								aCase.getPiece().getTypePiece().name(), aCase.getPiece().getCouleur().name());
-					}
-					J.valeurs(aCase.getPosition().toString(), aCase.getCouleur().name());
-				}
-			}
-
-		}catch(Exception ex){
-			System.out.println(ex.getMessage());
-			System.out.println("Erreur : tableau de case");
+			System.out.println("Bonjour");
+			System.out.println(partie.getPlateau().toString());
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+			System.out.println("Erreur: tableauCase.toString()");
 		}
-
-
-		System.out.println("Hello");
 
 		Systeme.quitter();
 	}

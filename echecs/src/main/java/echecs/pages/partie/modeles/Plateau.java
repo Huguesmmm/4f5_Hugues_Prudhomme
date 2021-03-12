@@ -76,7 +76,7 @@ public class Plateau implements PlateauLectureSeule {
             int indexColonne = 0;
             Couleur altCouleur = (i % 2 == 0) ? Couleur.BLANC : Couleur.NOIR;
             for (Colonne colonne : Colonne.values()) {
-                Case nouvelleCase = new Case(altCouleur, new Position(colonne, i));
+                Case nouvelleCase = new Case(altCouleur, new Position(colonne, Constantes.DIMENSION_PLATEAU - i));
                 plateauCases[i][indexColonne] = nouvelleCase;
                 altCouleur = (altCouleur == Couleur.NOIR) ? Couleur.BLANC : Couleur.NOIR;
                 indexColonne++;
@@ -94,5 +94,21 @@ public class Plateau implements PlateauLectureSeule {
                 }
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        String plateauReturned = "";
+
+        for(Case[] rang : plateauCases){
+            for(Case aCase : rang){
+                plateauReturned += aCase.toString();
+                plateauReturned += " ";
+            }
+            plateauReturned += "\n";
+        }
+
+
+        return plateauReturned;
     }
 }

@@ -6,4 +6,5 @@ public interface CaseLectureSeule {
 	Piece getPiece();
 	Couleur getCouleur();
 	Position getPosition();
+	String toString();
 }
