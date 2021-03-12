@@ -1,4 +1,4 @@
 package echecs.pages.partie.vues;
 
-public class VuePartieLocale {
+public class VuePartieLocale extends VuePartie{
 }

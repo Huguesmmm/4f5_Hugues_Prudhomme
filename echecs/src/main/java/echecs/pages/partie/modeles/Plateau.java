@@ -16,7 +16,7 @@ public class Plateau implements PlateauLectureSeule {
         J.appel(this);
         // création du tableau de toutes les cases
         initialiserPlateauCases();
-
+        ajouterOccupees();
         // création de la liste des cases occupées
         casesOccupees = new ArrayList<>();
     }
@@ -86,13 +86,9 @@ public class Plateau implements PlateauLectureSeule {
 
     private void ajouterOccupees(){
         for(Case aCase : casesOccupees){
-            for(int i = 0; i < plateauCases.length; i++){
-                for(int j = 0; j < plateauCases[i].length; j++){
-                    if (aCase.getPosition().equals(plateauCases[i][j].getPosition())) {
-                        plateauCases[i][j].setPiece(aCase.getPiece());
-                    }
-                }
-            }
+            int indiceColonne = aCase.getPosition().getColonne().ordinal();
+            int indiceRangee = aCase.getPosition().getRang();
+            plateauCases[indiceColonne][indiceRangee].setPiece(aCase.getPiece());
         }
     }
 
@@ -100,8 +96,8 @@ public class Plateau implements PlateauLectureSeule {
     public String toString() {
         String plateauReturned = "";
 
-        for(Case[] rang : plateauCases){
-            for(Case aCase : rang){
+        for(Case[] rangee : plateauCases){
+            for(Case aCase : rangee){
                 plateauReturned += aCase.toString();
                 plateauReturned += " ";
             }

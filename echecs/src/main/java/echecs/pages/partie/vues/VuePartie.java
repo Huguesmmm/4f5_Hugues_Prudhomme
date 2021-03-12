@@ -1,11 +1,18 @@
 package echecs.pages.partie.vues;
 
 import echecs.Constantes;
+import echecs.enumerations.Couleur;
+import echecs.pages.partie.modeles.CaseLectureSeule;
+import echecs.pages.partie.modeles.Piece;
+import echecs.pages.partie.modeles.Position;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import ntro.debogage.DoitEtre;
 import ntro.debogage.J;
 import ntro.mvc.Vue;
@@ -13,7 +20,7 @@ import ntro.mvc.Vue;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class VuePartie implements Vue, Initializable {
+public abstract class VuePartie implements Vue, Initializable {
     @FXML
     private VBox conteneurPlateau;
 
@@ -57,9 +64,6 @@ public class VuePartie implements Vue, Initializable {
         return aCase;
     }
 
-
-
-
     @Override
     public void obtenirCommandesPourEnvoi() {
         J.appel(this);
@@ -73,5 +77,32 @@ public class VuePartie implements Vue, Initializable {
     @Override
     public void verifierCommandesPossibles() {
         J.appel(this);
+    }
+
+    public boolean siIndicesValides(int indiceColonne, int indiceRangee){
+        J.appel(this);
+        boolean siValide = false;
+        if(indiceColonne >= 0 && indiceColonne < cases.length){
+            siValide = indiceRangee >= 0 && indiceRangee < cases[indiceColonne].length;
+        }
+        return siValide;
+    }
+
+    public void afficherCase(int indiceColonne, int indiceRangee, CaseLectureSeule aCaseTab){
+        J.appel(this);
+
+        if(siIndicesValides(indiceColonne, indiceRangee)){
+            Button aCase = cases[indiceColonne][indiceRangee];
+            Couleur couleur = aCaseTab.getCouleur();
+            Position position = aCaseTab.getPosition();
+            Piece piece = aCaseTab.getPiece();
+            switch (couleur){
+                case NOIR:
+                    aCase.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
+                    break;
+                case BLANC:
+                    aCase.setBackground(new Background(new BackgroundFill(Color.WHEAT, null, null)));
+            }
+        }
     }
 }
