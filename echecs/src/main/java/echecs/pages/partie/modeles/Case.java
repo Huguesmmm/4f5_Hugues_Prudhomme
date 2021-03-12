@@ -7,8 +7,13 @@ public class Case implements CaseLectureSeule{
 
 	private transient boolean estOccupee;
 	private Piece piece;
-	private transient Couleur couleur;
-	private Position position;
+	private transient final Couleur couleur;
+	private final Position position;
+
+	public Case(Couleur couleur, Position position) {
+		this.couleur = couleur;
+		this.position = position;
+	}
 
 	public void apresChargementJson(){
 		J.appel(this);
@@ -20,19 +25,9 @@ public class Case implements CaseLectureSeule{
 		return couleur;
 	}
 	
-	public void setCouleur(Couleur couleur) {
-		J.appel(this);
-		this.couleur = couleur;
-	}
-	
 	public Position getPosition() {
 		J.appel(this);
 		return position;
-	}
-	
-	public void setPosition(Position position) {
-		J.appel(this);
-		this.position = position;
 	}
 	
 	public Piece getPiece() {

@@ -36,30 +36,39 @@ public class PagePartieLocale extends Application {
 		J.appel(this);
 
 		String idModeleTest = IDS_MODELES_TESTS[alea.nextInt(IDS_MODELES_TESTS.length)];
+		PartieLocale partie = EntrepotDeModeles.obtenirModele(PartieLocale.class, idModeleTest);
+
 		try {
-			PartieLocale partie = EntrepotDeModeles.obtenirModele(PartieLocale.class, idModeleTest);
 			J.valeurs(partie.getId());
 			// afficher la liste de cases occupees
 			System.out.println(partie.getPlateau().getCasesOccupees().size());
-			for(int i = 0; i < partie.getPlateau().getCasesOccupees().size(); i++){
+			for (int i = 0; i < partie.getPlateau().getCasesOccupees().size(); i++) {
 				CaseLectureSeule aCaseOccupee = partie.getPlateau().getCasesOccupees().get(i);
 
 				J.valeurs(aCaseOccupee.getPosition().toString(), aCaseOccupee.getPiece().getTypePiece().name(),
 						aCaseOccupee.getPiece().getCouleur().name());
 			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Erreur: list case occupees");
+		}
+		try{
 			CaseLectureSeule[][] tabCases = partie.getPlateau().getPlateauCases();
 
 			for(int i = 0; i < tabCases.length; i++){
 				for(int j = 0; j < tabCases[i].length; j++){
 					CaseLectureSeule aCase = tabCases[i][j];
-					System.out.println(aCase.getCouleur().name());
-					System.out.println(aCase.getPosition().toString());
-					J.valeurs(aCase.getPosition().toString(), aCase.getCouleur().name(), aCase.getPosition().toString());
+					if(aCase.getPiece() != null){
+						J.valeurs(aCase.getPosition().toString(), aCase.getCouleur().name(),
+								aCase.getPiece().getTypePiece().name(), aCase.getPiece().getCouleur().name());
+					}
+					J.valeurs(aCase.getPosition().toString(), aCase.getCouleur().name());
 				}
 			}
 
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
+			System.out.println("Erreur : tableau de case");
 		}
 
 

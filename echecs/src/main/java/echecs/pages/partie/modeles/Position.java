@@ -2,9 +2,11 @@ package echecs.pages.partie.modeles;
 
 import echecs.enumerations.Colonne;
 
+import java.util.Objects;
+
 public class Position implements PositionLectureSeule{
-	private Colonne colonne;
-	private int rang;
+	private final Colonne colonne;
+	private final int rang;
 
 	public Position(Colonne colonne, int rang){
 		this.colonne = colonne;
@@ -16,20 +18,25 @@ public class Position implements PositionLectureSeule{
 		return colonne;
 	}
 	
-	public void setColonne(Colonne colonne) {
-		this.colonne = colonne;
-	}
-	
 	public int getRang() {
 		return rang;
-	}
-	
-	public void setRang(int rang) {
-		this.rang = rang;
 	}
 
 	@Override
 	public String toString() {
 		return "Position : " + colonne + rang;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Position)) return false;
+		Position position = (Position) o;
+		return rang == position.rang && colonne == position.colonne;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(colonne, rang);
 	}
 }

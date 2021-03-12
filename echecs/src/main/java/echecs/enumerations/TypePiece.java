@@ -3,7 +3,7 @@ package echecs.enumerations;
 public enum TypePiece {
 	PION,
 	TOUR,
-	CHEVALIER,
+	CAVALIER,
 	FOU,
 	REINE,
 	ROI
