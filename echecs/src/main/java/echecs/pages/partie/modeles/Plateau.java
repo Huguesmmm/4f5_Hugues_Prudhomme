@@ -85,10 +85,16 @@ public class Plateau implements PlateauLectureSeule {
     }
 
     private void ajouterOccupees(){
-        for(Case aCase : casesOccupees){
-            int indiceColonne = aCase.getPosition().getColonne().ordinal();
-            int indiceRangee = aCase.getPosition().getRang();
-            plateauCases[indiceColonne][indiceRangee].setPiece(aCase.getPiece());
+        try {
+            for (Case aCase : casesOccupees) {
+                int indiceColonne = aCase.getPosition().getColonne().ordinal();
+                J.valeurs(aCase.getPosition().getColonne().name(), aCase.getPosition().getColonne().ordinal());
+                int indiceRangee = aCase.getPosition().getRang() - 1;
+                J.valeurs(aCase.getPosition().getRang() - 1);
+                plateauCases[indiceColonne][indiceRangee].setPiece(aCase.getPiece());
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 

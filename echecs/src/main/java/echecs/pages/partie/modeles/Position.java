@@ -24,7 +24,8 @@ public class Position implements PositionLectureSeule{
 
 	@Override
 	public String toString() {
-		return "Position : " + colonne + rang;
+
+		return ""+ colonne + rang;
 	}
 
 	@Override

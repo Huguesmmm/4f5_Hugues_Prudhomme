@@ -1,17 +1,22 @@
 package echecs.pages.partie;
 
-import echecs.pages.partie.modeles.CaseLectureSeule;
+import echecs.pages.partie.afficheurs.AfficheurPartieLocale;
+import echecs.pages.partie.controleurs.ControleurPartieLocale;
 import echecs.pages.partie.modeles.PartieLocale;
+import echecs.pages.partie.vues.VuePartieLocale;
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
+import ntro.debogage.DoitEtre;
 import ntro.debogage.J;
+import ntro.javafx.ChargeurDeVue;
 import ntro.javafx.Initialisateur;
+import ntro.mvc.controleurs.FabriqueControleur;
 import ntro.mvc.modeles.EntrepotDeModeles;
-import ntro.systeme.Systeme;
 
 import java.util.Random;
 
-import static echecs.Constantes.IDS_MODELES_TESTS;
+import static echecs.Constantes.*;
 
 public class PagePartieLocale extends Application {
 	
@@ -35,33 +40,25 @@ public class PagePartieLocale extends Application {
 	public void start(Stage fenetrePrincipale) throws Exception {
 		J.appel(this);
 
+		ChargeurDeVue<VuePartieLocale> chargeur;
+		chargeur = new ChargeurDeVue<VuePartieLocale>(CHEMIN_PARTIE_LOCALE_FXML);
+
+		VuePartieLocale vue = chargeur.getVue();
+
 		String idModeleTest = IDS_MODELES_TESTS[alea.nextInt(IDS_MODELES_TESTS.length)];
 		PartieLocale partie = EntrepotDeModeles.obtenirModele(PartieLocale.class, idModeleTest);
 
-		try {
-			J.valeurs(partie.getId());
-			// afficher la liste de cases occupees
-			System.out.println(partie.getPlateau().getCasesOccupees().size());
-			for (int i = 0; i < partie.getPlateau().getCasesOccupees().size(); i++) {
-				CaseLectureSeule aCaseOccupee = partie.getPlateau().getCasesOccupees().get(i);
+		AfficheurPartieLocale afficheur = new AfficheurPartieLocale();
 
-				J.valeurs(aCaseOccupee.getPosition().toString(), aCaseOccupee.getPiece().getTypePiece().name(),
-						aCaseOccupee.getPiece().getCouleur().name());
-			}
-		}catch (Exception e) {
-			System.out.println(e.getMessage());
-			System.out.println("Erreur: list case occupees");
-		}
+		DoitEtre.nonNul(vue);
 
-		try{
-			System.out.println("Bonjour");
-			System.out.println(partie.getPlateau().toString());
-		}catch (Exception e){
-			System.out.println(e.getMessage());
-			System.out.println("Erreur: tableauCase.toString()");
-		}
+		FabriqueControleur.creerControleur(ControleurPartieLocale.class, partie, vue, afficheur);
 
-		Systeme.quitter();
+		Scene scene = chargeur.nouvelleScene(SIZE_PIXELS, SIZE_PIXELS);
+		fenetrePrincipale.setScene(scene);
+		fenetrePrincipale.setMinHeight(SIZE_PIXELS);
+		fenetrePrincipale.setMinWidth(SIZE_PIXELS);
+		fenetrePrincipale.show();
 	}
 	
 }

@@ -34,7 +34,7 @@ public abstract class AfficheurPartie <PLS extends PartieLectureSeule,
         for(CaseLectureSeule[] rangee : cases){
             for(CaseLectureSeule aCase : rangee){
                 int indiceColonne = aCase.getPosition().getColonne().ordinal();
-                int indiceRangee = aCase.getPosition().getRang();
+                int indiceRangee = aCase.getPosition().getRang() - 1;
                 afficherCase(indiceColonne, indiceRangee,aCase, vue);
             }
         }
