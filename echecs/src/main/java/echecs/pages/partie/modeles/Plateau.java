@@ -1,6 +1,5 @@
 package echecs.pages.partie.modeles;
 
-import echecs.Constantes;
 import echecs.enumerations.Colonne;
 import echecs.enumerations.Couleur;
 import ntro.debogage.J;
@@ -8,8 +7,10 @@ import ntro.debogage.J;
 import java.util.ArrayList;
 import java.util.List;
 
+import static echecs.Constantes.DIMENSION_PLATEAU;
+
 public class Plateau implements PlateauLectureSeule {
-    private transient Case[][] plateauCases = new Case[Constantes.DIMENSION_PLATEAU][Constantes.DIMENSION_PLATEAU];
+    private transient Case[][] plateauCases = new Case[DIMENSION_PLATEAU][DIMENSION_PLATEAU];
     protected List<Case> casesOccupees;
 
     public void apresCreation() {
@@ -56,7 +57,7 @@ public class Plateau implements PlateauLectureSeule {
         J.appel(this);
 
         CaseLectureSeule[][] casesLectureSeules =
-                new CaseLectureSeule[Constantes.DIMENSION_PLATEAU][Constantes.DIMENSION_PLATEAU];
+                new CaseLectureSeule[DIMENSION_PLATEAU][DIMENSION_PLATEAU];
 
         for(int i = 0; i < casesLectureSeules.length; i++){
             for(int j = 0; j < casesLectureSeules[i].length; j++){
@@ -76,7 +77,7 @@ public class Plateau implements PlateauLectureSeule {
             int indexColonne = 0;
             Couleur altCouleur = (i % 2 == 0) ? Couleur.BLANC : Couleur.NOIR;
             for (Colonne colonne : Colonne.values()) {
-                Case nouvelleCase = new Case(altCouleur, new Position(colonne, Constantes.DIMENSION_PLATEAU - i));
+                Case nouvelleCase = new Case(altCouleur, new Position(colonne, DIMENSION_PLATEAU - i));
                 plateauCases[i][indexColonne] = nouvelleCase;
                 altCouleur = (altCouleur == Couleur.NOIR) ? Couleur.BLANC : Couleur.NOIR;
                 indexColonne++;
@@ -88,10 +89,8 @@ public class Plateau implements PlateauLectureSeule {
         try {
             for (Case aCase : casesOccupees) {
                 int indiceColonne = aCase.getPosition().getColonne().ordinal();
-                J.valeurs(aCase.getPosition().getColonne().name(), aCase.getPosition().getColonne().ordinal());
-                int indiceRangee = aCase.getPosition().getRang() - 1;
-                J.valeurs(aCase.getPosition().getRang() - 1);
-                plateauCases[indiceColonne][indiceRangee].setPiece(aCase.getPiece());
+                int indiceRangee = aCase.getPosition().getRang();
+                plateauCases[DIMENSION_PLATEAU - indiceRangee][indiceColonne].setPiece(aCase.getPiece());
             }
         }catch(Exception e){
             System.out.println(e.getMessage());

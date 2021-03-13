@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="echecs.pages.partie.vues.VuePartieLocale">
     <VBox>
-        <VBox fx:id="conteneurPlateau"/>
+        <VBox fx:id="conteneurPlateau" VBox.vgrow="ALWAYS">
+            <padding>
+                <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            </padding>
+        </VBox>
     </VBox>
 </VBox>

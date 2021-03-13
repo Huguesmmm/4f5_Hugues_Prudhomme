@@ -7,11 +7,8 @@ import echecs.pages.partie.modeles.Position;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import ntro.debogage.DoitEtre;
 import ntro.debogage.J;
 import ntro.mvc.Vue;
@@ -19,8 +16,7 @@ import ntro.mvc.Vue;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static echecs.Constantes.DIMENSION_PLATEAU;
-import static echecs.Constantes.TAILLE_CASE;
+import static echecs.Constantes.*;
 
 public abstract class VuePartie implements Vue, Initializable {
     @FXML
@@ -32,6 +28,7 @@ public abstract class VuePartie implements Vue, Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         J.appel(this);
         DoitEtre.nonNul(conteneurPlateau);
+        conteneurPlateau.setFillWidth(true);
     }
     public void creerPlateau(){
         J.appel(this);
@@ -92,26 +89,86 @@ public abstract class VuePartie implements Vue, Initializable {
 
     public void afficherCase(int indiceColonne, int indiceRangee, CaseLectureSeule aCaseTab){
         J.appel(this);
-        for(int i = 0; i < cases.length; i++){
-            for(int j = 0; j < cases[i].length; j++){
-                System.out.println(cases[i][j]);
-            }
-        }
         if(siIndicesValides(indiceColonne, indiceRangee)){
             Button aCase = cases[indiceColonne][indiceRangee];
             Couleur couleur = aCaseTab.getCouleur();
             Position position = aCaseTab.getPosition();
             Piece piece = aCaseTab.getPiece();
+            boolean occupied = aCaseTab.isOccupied();
+
             switch (couleur){
                 case NOIR:
-                    aCase.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
-                    aCase.setTextFill(Color.WHEAT);
+                    aCase.setStyle(null);
+                    aCase.setStyle(STYLE_BLACK_UNOCCUPIED);
                     break;
                 case BLANC:
-                    aCase.setBackground(new Background(new BackgroundFill(Color.WHEAT, null, null)));
+                    aCase.setStyle(null);
+                    aCase.setStyle(STYLE_WHITE_UNOCCUPIED);
+                    break;
             }
 
-            aCase.setText(position.toString());
+            if(occupied){
+                switch (couleur){
+                    case NOIR:
+                        aCase.setStyle(null);
+                        aCase.setStyle(STYLE_BLACK_OCCUPIED);
+                        break;
+                    case BLANC:
+                        aCase.setStyle(null);
+                        aCase.setStyle(STYLE_WHITE_OCCUPIED);
+                        break;
+                }
+                switch (piece.getCouleur()){
+                    case BLANC:
+                        switch (piece.getTypePiece()){
+                            case PION:
+                                aCase.setText("\u2659");
+                                break;
+                            case TOUR:
+                                aCase.setText("\u2656");
+                                break;
+                            case CAVALIER:
+                                aCase.setText("\u2658");
+                                break;
+                            case FOU:
+                                aCase.setText("\u2657");
+                                break;
+                            case ROI:
+                                aCase.setText("\u2654");
+                                break;
+                            case REINE:
+                                aCase.setText("\u2655");
+                                break;
+                        }
+                        break;
+                    case NOIR:
+                        switch (piece.getTypePiece()){
+                            case PION:
+                                aCase.setText("\u265F");
+                                break;
+                            case TOUR:
+                                aCase.setText("\u265C");
+                                break;
+                            case CAVALIER:
+                                aCase.setText("\u265E");
+                                break;
+                            case FOU:
+                                aCase.setText("\u265D");
+                                break;
+                            case ROI:
+                                aCase.setText("\u265A");
+                                break;
+                            case REINE:
+                                aCase.setText("\u265B");
+                                break;
+                        }
+                }
+
+            }else {
+                aCase.setText(position.toString());
+            }
+
+
         }
     }
 }

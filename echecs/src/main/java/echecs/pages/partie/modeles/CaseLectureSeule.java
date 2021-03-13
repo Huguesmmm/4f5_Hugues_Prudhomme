@@ -7,4 +7,5 @@ public interface CaseLectureSeule {
 	Couleur getCouleur();
 	Position getPosition();
 	String toString();
+	boolean isOccupied();
 }

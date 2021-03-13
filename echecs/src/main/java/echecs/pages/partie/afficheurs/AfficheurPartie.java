@@ -31,12 +31,14 @@ public abstract class AfficheurPartie <PLS extends PartieLectureSeule,
         List<CaseLectureSeule> casesOccupees = plateau.getCasesOccupees();
         CaseLectureSeule[][] cases = plateau.getPlateauCases();
 
+        int indiceRangee = 0;
         for(CaseLectureSeule[] rangee : cases){
+            int indiceColonne = 0;
             for(CaseLectureSeule aCase : rangee){
-                int indiceColonne = aCase.getPosition().getColonne().ordinal();
-                int indiceRangee = aCase.getPosition().getRang() - 1;
-                afficherCase(indiceColonne, indiceRangee,aCase, vue);
+                afficherCase(indiceColonne, indiceRangee, aCase, vue);
+                indiceColonne++;
             }
+            indiceRangee++;
         }
 
     }
