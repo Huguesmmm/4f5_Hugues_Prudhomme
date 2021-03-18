@@ -18,11 +18,15 @@ public abstract class  ControleurPartie<PLS extends PartieLectureSeule,
     @Override
     protected void obtenirMessagesPourEnvoi() {
         J.appel(this);
+
+
     }
 
     @Override
     protected void installerReceptionCommandes() {
         J.appel(this);
+
+        installerReceptionCommandes();
     }
 
     @Override

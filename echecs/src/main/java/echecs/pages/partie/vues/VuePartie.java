@@ -14,6 +14,8 @@ import ntro.debogage.J;
 import ntro.mvc.Vue;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import static echecs.Constantes.*;
@@ -23,6 +25,7 @@ public abstract class VuePartie implements Vue, Initializable {
     private VBox conteneurPlateau;
 
     private Button[][] cases = new Button[DIMENSION_PLATEAU][DIMENSION_PLATEAU];
+    private List<Button> casesOccupees = new ArrayList<Button>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -71,6 +74,7 @@ public abstract class VuePartie implements Vue, Initializable {
     @Override
     public void installerCapteursEvenementsUsager() {
         J.appel(this);
+
     }
 
     @Override

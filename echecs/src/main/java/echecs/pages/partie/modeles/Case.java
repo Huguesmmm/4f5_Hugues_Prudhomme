@@ -43,6 +43,7 @@ public class Case implements CaseLectureSeule{
 
 	public void reset(){
 		this.isOccupied = false;
+		this.piece = null;
 	}
 
 	public boolean isOccupied(){

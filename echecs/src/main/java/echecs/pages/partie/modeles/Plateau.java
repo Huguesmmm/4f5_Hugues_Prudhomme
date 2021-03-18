@@ -85,7 +85,7 @@ public class Plateau implements PlateauLectureSeule {
         }
     }
 
-    private void ajouterOccupees(){
+    public void ajouterOccupees(){
         try {
             for (Case aCase : casesOccupees) {
                 int indiceColonne = aCase.getPosition().getColonne().ordinal();
@@ -95,6 +95,10 @@ public class Plateau implements PlateauLectureSeule {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
+    }
+
+    public void retirerOccupee(Position position){
+        casesOccupees
     }
 
     @Override
