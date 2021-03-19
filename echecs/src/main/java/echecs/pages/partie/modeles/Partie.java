@@ -6,7 +6,6 @@ import ntro.mvc.modeles.Modele;
 
 public class Partie<PLS extends PartieLectureSeule> extends Modele<PLS> implements PartieLectureSeule {
 
-	protected int nbCaseOccupees;
 	protected Plateau plateau;
 	protected Couleur couleurCourante;
 

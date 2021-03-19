@@ -45,7 +45,7 @@ public class PagePartieLocale extends Application {
 
 		VuePartieLocale vue = chargeur.getVue();
 
-		String idModeleTest = IDS_MODELES_TESTS[alea.nextInt(IDS_MODELES_TESTS.length)];
+		String idModeleTest = "complet";
 		PartieLocale partie = EntrepotDeModeles.obtenirModele(PartieLocale.class, idModeleTest);
 
 		AfficheurPartieLocale afficheur = new AfficheurPartieLocale();

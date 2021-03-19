@@ -74,6 +74,8 @@ public abstract class VuePartie implements Vue, Initializable {
     @Override
     public void installerCapteursEvenementsUsager() {
         J.appel(this);
+        // comment aller chercher la liste de case occupees
+
 
     }
 

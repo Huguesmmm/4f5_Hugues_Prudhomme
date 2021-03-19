@@ -1,11 +1,11 @@
-package echecs.commandes.bouger_ici;
+package echecs.commandes.peut_jouer;
 
 import echecs.pages.partie.modeles.Position;
 import ntro.commandes.Commande;
 
-public class BougerIci extends Commande<BougerIciPourEnvoi, BougerIciRecue>
-                        implements BougerIciPourEnvoi, BougerIciRecue{
-    private Position position;
+public class PeutJouer extends Commande<PeutJouerPourEnvoie, PeutJouerRecue>
+                            implements PeutJouerPourEnvoie, PeutJouerRecue {
+private Position position;
 
     @Override
     public void setPosition(Position position) {

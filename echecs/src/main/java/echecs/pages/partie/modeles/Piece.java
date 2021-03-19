@@ -7,7 +7,7 @@ public class Piece implements PieceLectureSeule{
 	private Couleur couleur;
 	private TypePiece typePiece;
 	private transient Position position;
-	
+
 	public Couleur getCouleur() {
 		return couleur;
 	}

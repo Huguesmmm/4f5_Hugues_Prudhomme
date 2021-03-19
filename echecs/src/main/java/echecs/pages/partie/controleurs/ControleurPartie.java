@@ -1,11 +1,15 @@
 package echecs.pages.partie.controleurs;
 
+import echecs.commandes.bouger_ici.BougerIciRecue;
+import echecs.commandes.peut_jouer.PeutJouer;
+import echecs.commandes.peut_jouer.PeutJouerRecue;
 import echecs.pages.partie.afficheurs.AfficheurPartie;
 import echecs.pages.partie.modeles.Partie;
 import echecs.pages.partie.modeles.PartieLectureSeule;
 import echecs.pages.partie.vues.VuePartie;
 import ntro.debogage.J;
 import ntro.mvc.controleurs.ControleurModeleVue;
+import ntro.mvc.controleurs.RecepteurCommandeMVC;
 
 public abstract class  ControleurPartie<PLS extends PartieLectureSeule,
         P extends Partie<PLS>,
@@ -26,7 +30,26 @@ public abstract class  ControleurPartie<PLS extends PartieLectureSeule,
     protected void installerReceptionCommandes() {
         J.appel(this);
 
-        installerReceptionCommandes();
+        installerRecepteurCommande(PeutJouer.class, new RecepteurCommandeMVC<PeutJouerRecue>(){
+            @Override
+            public void executerCommandeMVC(PeutJouerRecue peutJouerRecue) {
+                J.appel(this);
+
+            }
+        });
+    }
+
+    protected void reagirCommandeBougerIci(BougerIciRecue bougerIciRecue){
+        J.appel(this);
+
+        // Aller chercher le modele
+
+    }
+
+    protected void reagirCommandePeutJouer(PeutJouerRecue peutJouerRecue){
+        J.appel(this);
+
+
     }
 
     @Override

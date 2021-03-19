@@ -17,7 +17,7 @@ public class Plateau implements PlateauLectureSeule {
         J.appel(this);
         // création du tableau de toutes les cases
         initialiserPlateauCases();
-        ajouterOccupees();
+        ajouterOccupeesPlateau();
         // création de la liste des cases occupées
         casesOccupees = new ArrayList<>();
     }
@@ -25,13 +25,12 @@ public class Plateau implements PlateauLectureSeule {
     public void apresChargementJson() {
         J.appel(this);
         initialiserPlateauCases();
-        ajouterOccupees();
+        ajouterOccupeesPlateau();
         // case occupé est une liste pleine
         for(int indiceCase = 0; indiceCase < casesOccupees.size(); indiceCase++){
             Case aCase = casesOccupees.get(indiceCase);
             aCase.apresChargementJson();
         }
-
     }
 
 
@@ -85,7 +84,7 @@ public class Plateau implements PlateauLectureSeule {
         }
     }
 
-    public void ajouterOccupees(){
+    public void ajouterOccupeesPlateau(){
         try {
             for (Case aCase : casesOccupees) {
                 int indiceColonne = aCase.getPosition().getColonne().ordinal();
@@ -95,10 +94,6 @@ public class Plateau implements PlateauLectureSeule {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-    }
-
-    public void retirerOccupee(Position position){
-        casesOccupees
     }
 
     @Override
