@@ -1,6 +1,6 @@
 {
-  "couleurCourante": "BLANC",
   "plateau": {
+    "couleurCourante": "BLANC",
     "casesOccupees": [
       {
         "piece": {

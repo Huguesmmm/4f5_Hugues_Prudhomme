@@ -34,9 +34,13 @@ public abstract class  ControleurPartie<PLS extends PartieLectureSeule,
             @Override
             public void executerCommandeMVC(PeutJouerRecue peutJouerRecue) {
                 J.appel(this);
-
+                reagirPeutJouer(peutJouerRecue);
             }
         });
+    }
+
+    protected void reagirPeutJouer(PeutJouerRecue peutJouerRecue){
+        
     }
 
     protected void reagirCommandeBougerIci(BougerIciRecue bougerIciRecue){

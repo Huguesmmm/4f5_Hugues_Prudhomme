@@ -5,6 +5,7 @@ import ntro.debogage.J;
 
 public class Case implements CaseLectureSeule{
 
+	private transient boolean isActive;
 	private transient boolean isOccupied;
 	private Piece piece;
 	private transient final Couleur couleur;
@@ -13,6 +14,7 @@ public class Case implements CaseLectureSeule{
 	public Case(Couleur couleur, Position position) {
 		this.couleur = couleur;
 		this.position = position;
+		this.isActive = false;
 	}
 
 	public void apresChargementJson(){
@@ -43,6 +45,7 @@ public class Case implements CaseLectureSeule{
 
 	public void reset(){
 		this.isOccupied = false;
+		this.isActive = false;
 		this.piece = null;
 	}
 
@@ -70,6 +73,13 @@ public class Case implements CaseLectureSeule{
 					", position=" + position.toString() +
 					'}';
 		}
+	}
 
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean active) {
+		isActive = active;
 	}
 }

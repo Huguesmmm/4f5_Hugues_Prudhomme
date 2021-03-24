@@ -26,6 +26,7 @@ public abstract class VuePartie implements Vue, Initializable {
 
     private Button[][] cases = new Button[DIMENSION_PLATEAU][DIMENSION_PLATEAU];
     private List<Button> casesOccupees = new ArrayList<Button>();
+    // rajouter couleur courante
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,8 +75,8 @@ public abstract class VuePartie implements Vue, Initializable {
     @Override
     public void installerCapteursEvenementsUsager() {
         J.appel(this);
-        // comment aller chercher la liste de case occupees
-
+        // comment aller chercher la liste de case occupee
+        // boucle parcourir mon tableau de bouton
 
     }
 

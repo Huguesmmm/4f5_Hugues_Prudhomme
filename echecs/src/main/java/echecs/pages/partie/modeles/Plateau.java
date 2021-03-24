@@ -12,6 +12,7 @@ import static echecs.Constantes.DIMENSION_PLATEAU;
 public class Plateau implements PlateauLectureSeule {
     private transient Case[][] plateauCases = new Case[DIMENSION_PLATEAU][DIMENSION_PLATEAU];
     protected List<Case> casesOccupees;
+    protected Couleur couleurCourante;
 
     public void apresCreation() {
         J.appel(this);
@@ -87,9 +88,13 @@ public class Plateau implements PlateauLectureSeule {
     public void ajouterOccupeesPlateau(){
         try {
             for (Case aCase : casesOccupees) {
+
                 int indiceColonne = aCase.getPosition().getColonne().ordinal();
                 int indiceRangee = aCase.getPosition().getRang();
                 plateauCases[DIMENSION_PLATEAU - indiceRangee][indiceColonne].setPiece(aCase.getPiece());
+                if(aCase.getCouleur() == couleurCourante){
+                    aCase.setActive(true);
+                }
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -111,4 +116,13 @@ public class Plateau implements PlateauLectureSeule {
 
         return plateauReturned;
     }
+
+    public Couleur getCouleurCourante() {
+        return couleurCourante;
+    }
+
+    public void setCouleurCourante(Couleur couleurCourante) {
+        this.couleurCourante = couleurCourante;
+    }
+
 }
