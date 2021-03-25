@@ -7,4 +7,5 @@ public interface PieceLectureSeule {
 	Couleur getCouleur();
 	TypePiece getTypePiece();
 	Position getPosition();
+	boolean isPremierMouvement();
 }
