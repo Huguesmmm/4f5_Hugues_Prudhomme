@@ -5,5 +5,4 @@ import ntro.commandes.CommandePourEnvoi;
 
 public interface PeutJouerPourEnvoie extends CommandePourEnvoi {
     void setPosition(Position position);
-    // ajouter type de piece
 }

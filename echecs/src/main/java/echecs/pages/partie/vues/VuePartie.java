@@ -1,9 +1,13 @@
 package echecs.pages.partie.vues;
 
+import echecs.commandes.peut_jouer.PeutJouerPourEnvoie;
+import echecs.enumerations.Colonne;
 import echecs.enumerations.Couleur;
 import echecs.pages.partie.modeles.CaseLectureSeule;
 import echecs.pages.partie.modeles.Piece;
 import echecs.pages.partie.modeles.Position;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -26,6 +30,7 @@ public abstract class VuePartie implements Vue, Initializable {
 
     private Button[][] cases = new Button[DIMENSION_PLATEAU][DIMENSION_PLATEAU];
     private List<Button> casesOccupees = new ArrayList<Button>();
+    private PeutJouerPourEnvoie peutJouerPourEnvoie;
     // rajouter couleur courante
 
     @Override
@@ -75,8 +80,22 @@ public abstract class VuePartie implements Vue, Initializable {
     @Override
     public void installerCapteursEvenementsUsager() {
         J.appel(this);
-        // comment aller chercher la liste de case occupee
-        // boucle parcourir mon tableau de bouton
+
+        for(int i = 0; i < cases.length; i++){
+            for(int j = 0; j < cases[i].length; j++){
+                Colonne[] colonnes = Colonne.values();
+                final Colonne colonne = colonnes[j];
+                final int indiceRangee = DIMENSION_PLATEAU - i;
+                cases[i][j].setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        J.appel(this);
+                        peutJouerPourEnvoie.setPosition(new Position(colonne, indiceRangee));
+                        peutJouerPourEnvoie.envoyerCommande();
+                    }
+                });
+            }
+        }
 
     }
 

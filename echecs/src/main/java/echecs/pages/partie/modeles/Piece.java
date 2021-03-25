@@ -7,6 +7,7 @@ public class Piece implements PieceLectureSeule{
 	private Couleur couleur;
 	private TypePiece typePiece;
 	private transient Position position;
+	private transient boolean isPremierMouvement = true;
 
 	public Couleur getCouleur() {
 		return couleur;
@@ -25,6 +26,7 @@ public class Piece implements PieceLectureSeule{
 	}
 	public void setPosition(Position position) {
 		this.position = position;
+		this.isPremierMouvement = false;
 	}
 
 	

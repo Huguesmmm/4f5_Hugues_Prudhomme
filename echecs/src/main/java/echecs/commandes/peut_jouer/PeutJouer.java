@@ -5,7 +5,7 @@ import ntro.commandes.Commande;
 
 public class PeutJouer extends Commande<PeutJouerPourEnvoie, PeutJouerRecue>
                             implements PeutJouerPourEnvoie, PeutJouerRecue {
-private Position position;
+    private Position position;
 
     @Override
     public void setPosition(Position position) {

@@ -1,5 +1,6 @@
 package echecs.pages.partie.modeles;
 
+import echecs.enumerations.Couleur;
 import ntro.debogage.J;
 import ntro.mvc.modeles.Modele;
 
@@ -35,5 +36,22 @@ public class Partie<PLS extends PartieLectureSeule> extends Modele<PLS> implemen
 	public void setPlateau(Plateau plateau){
 		J.appel(this);
 		this.plateau = plateau;
+	}
+
+	public void effectuerCoup(){
+		prochaineCouleur();
+	}
+
+	private void prochaineCouleur(){
+		J.appel(this);
+		Couleur couleurCourante = plateau.getCouleurCourante();
+
+		switch(couleurCourante){
+			case NOIR:
+				plateau.setCouleurCourante(Couleur.BLANC);
+				break;
+			case BLANC:
+				plateau.setCouleurCourante(Couleur.NOIR);
+		}
 	}
 }

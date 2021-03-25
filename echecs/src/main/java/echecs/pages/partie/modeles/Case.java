@@ -82,4 +82,10 @@ public class Case implements CaseLectureSeule{
 	public void setActive(boolean active) {
 		isActive = active;
 	}
+
+	public void synchroniserPosition(){
+		if(isOccupied){
+			piece.setPosition(position);
+		}
+	}
 }
