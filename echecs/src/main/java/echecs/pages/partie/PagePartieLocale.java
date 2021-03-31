@@ -54,10 +54,10 @@ public class PagePartieLocale extends Application {
 
 		FabriqueControleur.creerControleur(ControleurPartieLocale.class, partie, vue, afficheur);
 
-		Scene scene = chargeur.nouvelleScene(SIZE_PIXELS, SIZE_PIXELS);
+		Scene scene = chargeur.nouvelleScene(SIZE_PARTIE_PIXELS, SIZE_PARTIE_PIXELS);
 		fenetrePrincipale.setScene(scene);
-		fenetrePrincipale.setMinHeight(SIZE_PIXELS);
-		fenetrePrincipale.setMinWidth(SIZE_PIXELS);
+		fenetrePrincipale.setMinHeight(SIZE_PARTIE_PIXELS);
+		fenetrePrincipale.setMinWidth(SIZE_PARTIE_PIXELS);
 		fenetrePrincipale.show();
 	}
 	
